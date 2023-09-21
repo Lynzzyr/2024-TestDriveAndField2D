@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import java.sql.Driver;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.kOperatorConstants;

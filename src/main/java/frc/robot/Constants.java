@@ -32,10 +32,12 @@ public final class Constants {
 
     public static final class kEncoder {
 
-      public static final int leftEncoderDIOPort = 1;
-      public static final int rightEncoderDIOPort = 2;
+      public static final int leftEncoderID = 20;
+      public static final int rightEncoderID = 21;
 
-      public static final double kEncoderDistancePerRotation = kWheel.kWheelCircumference;
+      public static final int kCountsPerRotation = 4096;
+      public static final double kSensorCoefficient = kWheel.kWheelCircumference / kCountsPerRotation;
+      public static final String kUnitString = "m";
 
     }
 
@@ -50,9 +52,20 @@ public final class Constants {
 
     public static final class kWheel {
 
-      public static final double kWheelDiameter = 0.15; // meters
+      public static final double kWheelDiameter = 0.15; // based off of Bishop; meters
       public static final double kWheelCircumference = Math.PI * kWheelDiameter; // meters
 
+    }
+
+    public static final class kSimulation {
+
+      public static final double kGearing = 5.0;
+      public static final double kJKgMeterSq = 3;
+      public static final double kMass = 50; // based off of Bishop
+      public static final double kWheelRadius = kWheel.kWheelDiameter / 2;
+      public static final double kTrackWidth = 0.6; // based off of Bishop
+      public static final double kStandardDevs = 0.0; // set to null
+      
     }
 
     public static final int kCurrentLimitAmps = 30;
