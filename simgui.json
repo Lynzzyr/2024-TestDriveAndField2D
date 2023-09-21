@@ -1,0 +1,32 @@
+{
+  "HALProvider": {
+    "Other Devices": {
+      "Pigeon 2[14]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [10]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [11]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [12]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/Shuffleboard/Field2D/Field": "Field2d"
+    }
+  }
+}
