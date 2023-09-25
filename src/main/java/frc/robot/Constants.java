@@ -6,6 +6,8 @@ package frc.robot;
 
 import com.ctre.phoenix.sensors.Pigeon2.AxisDirection;
 
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -56,6 +58,30 @@ public final class Constants {
       public static final double kWheelCircumference = Math.PI * kWheelDiameter; // meters
 
     }
+
+    public static final class kAuto {
+
+      public static final double kRamseteB = 2; // Recommended value
+      public static final double kRamseteZeta = 0.7; // Recommended value
+
+      public static final double kPDrive = 2.5398; // from Bishop's code
+
+      public static final double kMaxVelocity = 4;
+      public static final double kMaxAccel = 4;
+
+    }
+
+    // Values are from Bishop's SysID results
+    public static final class kFeedforward {
+
+      public static final double ksVolts = 0.18289;
+      public static final double kvVolts = 1.9159;
+      public static final double kaVolts = 0.29742;
+
+    }
+
+    public static final double kTrackWidth = 0.6; // from Bishop's code
+    public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(kTrackWidth);
 
     public static final int kCurrentLimitAmps = 30;
 

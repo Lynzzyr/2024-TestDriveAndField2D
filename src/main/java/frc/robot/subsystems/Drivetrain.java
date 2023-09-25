@@ -11,8 +11,10 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants.kDrivetrain;
@@ -102,6 +104,16 @@ public class Drivetrain extends Subsystem {
 
   }
 
+  // Raw motor voltage input method
+  public void setMotorVolts(double leftMotVolts, double rightMotVolts) {
+
+    topLeft_mot.setVoltage(leftMotVolts);
+    topRight_mot.setVoltage(rightMotVolts);
+
+    differential.feed();
+
+  }
+
   // Left encoder distance
   public double getLeftDistanceTraveled() {
 
@@ -116,11 +128,49 @@ public class Drivetrain extends Subsystem {
     
   }
 
+  // Left encoder velocity
+  public double getLeftVelocity() {
+
+    return left_enc.getVelocity();
+
+  }
+
+  // Right encoder velocity
+  public double getRightVelocity() {
+
+    return right_enc.getVelocity();
+
+  }
+
+  // Wheel speeds returned as a DifferentialDriveWheelSpeeds object
+  public DifferentialDriveWheelSpeeds getWheelSpeeds() {
+
+    return new DifferentialDriveWheelSpeeds(getLeftVelocity(), getRightVelocity());
+
+  }
+
   // Gyroscope rotation
   public Rotation2d getGyroRotation() {
 
     return gyro.getRotation2d();
     
+  }
+
+  // Get odometry position
+  public Pose2d getPose2D() {
+
+    return odometry.getPoseMeters();
+
+  }
+
+  // Reset odometry position
+  public void resetOdometry(Pose2d pose) {
+
+    left_enc.setPosition(0);
+    right_enc.setPosition(0);
+
+    odometry.resetPosition(getGyroRotation(), 0, 0, pose);
+
   }
 
   @Override

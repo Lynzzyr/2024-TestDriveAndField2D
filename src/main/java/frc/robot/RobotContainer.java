@@ -4,10 +4,14 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.PathPlanner;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.kOperatorConstants;
+import frc.robot.Constants.kDrivetrain.kAuto;
 import frc.robot.commands.DefaultDrive;
+import frc.robot.commands.autoroutines.SplitPathA;
 import frc.robot.subsystems.Drivetrain;
 
 public class RobotContainer {
@@ -22,6 +26,9 @@ public class RobotContainer {
   // Commands
   private final DefaultDrive sys_defaultDrive;
 
+  // Auto routines
+  private final SplitPathA sys_splitPathA;
+
   public RobotContainer() {
 
     // Controllers
@@ -34,6 +41,9 @@ public class RobotContainer {
     // Commands
     sys_defaultDrive = new DefaultDrive(sys_drivetrain, primary_con);
 
+    // Auto routines
+    sys_splitPathA = new SplitPathA(sys_drivetrain, PathPlanner.loadPathGroup("examplePath", kAuto.kMaxVelocity, kAuto.kMaxAccel));
+
     // Default commands
     sys_drivetrain.setDefaultCommand(sys_defaultDrive);
 
@@ -45,7 +55,7 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
 
-    return null;
+    return sys_splitPathA;
 
   }
 }
