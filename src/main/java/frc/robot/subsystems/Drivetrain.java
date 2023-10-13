@@ -16,12 +16,12 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.kDrivetrain;
 import frc.robot.Constants.kDrivetrain.kEncoder;
 import frc.robot.Constants.kDrivetrain.kGyroscope;
 
-public class Drivetrain extends Subsystem {
+public class Drivetrain extends SubsystemBase {
 
   // Motors
   private final CANSparkMax topLeft_mot;
