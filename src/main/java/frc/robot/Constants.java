@@ -57,17 +57,6 @@ public final class Constants {
 
     }
 
-    public static final class kSimulation {
-
-      public static final double kGearing = 5.0;
-      public static final double kJKgMeterSq = 3;
-      public static final double kMass = 50; // based off of Bishop
-      public static final double kWheelRadius = kWheel.kWheelDiameter / 2;
-      public static final double kTrackWidth = 0.6; // based off of Bishop
-      public static final double kStandardDevs = 0.0; // set to null
-      
-    }
-
     public static final int kCurrentLimitAmps = 30;
 
   }
